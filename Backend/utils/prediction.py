@@ -366,7 +366,6 @@ def predict(request: PredictionRequest):
     response = {
         "status": "success",
         "timestamp": datetime.now().isoformat(),
-        "requestId": "123",
         "prediction": {
             "predictedPricePerMetreSquared": {"value": final_pred, "unit": "EUR/m²"},
             "totalPredictedPrice": {"value": total_predicted_price, "unit": "EUR"}
