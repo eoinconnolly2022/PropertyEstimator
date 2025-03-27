@@ -43,6 +43,7 @@ house_to_type = {
 }
 df["property_category"] = df["property_type"].map(house_to_type)
 df = pd.get_dummies(df, columns=["property_category"], prefix="prop")
+df = pd.get_dummies(df, columns=["ber"], prefix="ber")
 
 # Define base features
 base_features = [
