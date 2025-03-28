@@ -33,9 +33,6 @@ df = remove_outliers(df, "price_per_sqm")
 df = remove_outliers(df, "beds")
 df = remove_outliers(df, "bathrooms")
 
-# Print number of rows after preprocessing
-print(f"Number of rows after removing outliers and dropping NaNs: {len(df)}")
-
 # Log-transform target to reduce skew
 df["price_per_sqm"] = np.log1p(df["price_per_sqm"])
 
@@ -67,7 +64,7 @@ features = [
 features.extend([col for col in df.columns if col.startswith("ber_") or col.startswith("prop_")])
 
 target = "price_per_sqm"
-print(features)
+
 # Drop rows with any missing values after removing outliers
 df.dropna(subset=features + [target], inplace=True)
 

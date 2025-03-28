@@ -155,23 +155,6 @@ def change_password(username, old_password, new_password):
         }
     return response
 
-# Get account info given username and password
-def account_info(username, password):
-    api_key_response = get_api_key(username, password)
-    if api_key_response["status"] == "success":
-        response = {
-            "status": "success",
-            "username": username,
-            "apiKeys": api_key_response["apiKeys"],
-            "usage": "unlimited"
-        }
-    else:
-        response = {
-            "status": "failure",
-            "message": "Invalid username or password"
-        }
-    return response
-
 # Create a new API key for an existing user given username and password
 def create_new_api_key(username, password):
     query = sql.SQL("""

@@ -34,9 +34,6 @@ df = remove_outliers(df, "price_per_sqm")
 df = remove_outliers(df, "beds")
 df = remove_outliers(df, "bathrooms")
 
-# Print number of rows after preprocessing
-print(f"Number of rows after removing outliers and dropping NaNs: {len(df)}")
-
 # Log-transform target to reduce skew
 df["price_per_sqm"] = np.log1p(df["price_per_sqm"])
 
@@ -121,7 +118,7 @@ def objective(trial):
         model, X, y, cv=kfold, scoring=scoring, verbose=0, return_train_score=False
     )
     
-    # Return the average RMSE (or any other metric) as the objective value
+    # Return the average RMSE as the objective value
     return np.mean(cv_results['test_MAPE'])
 
 # Run Optuna optimization

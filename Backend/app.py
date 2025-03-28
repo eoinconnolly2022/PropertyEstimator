@@ -5,7 +5,6 @@ from utils.account import (
     create_account, 
     get_api_key, 
     change_password, 
-    account_info, 
     create_new_api_key, 
     get_user_usage
 )
@@ -33,12 +32,6 @@ def read_root():
 @app.get("/ApiKey")
 def ApiKeyGET(username: str, password: str):
     response = get_api_key(username, password)
-    return JSONResponse(content=response)
-
-#Endpoint to return user account info
-@app.get("/UserInfo")
-def accountInfoGET(username: str, password: str):
-    response = account_info(username, password)
     return JSONResponse(content=response)
 
 #Endpoint to return user usage
